@@ -49,12 +49,10 @@ project/
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/DavidHunter94/Proyecto-de-Pruebas-de-Creaci-n-de-Kits---Urban-Grocers.git
-cd Proyecto-de-Pruebas-de-Creaci-n-de-Kits---Urban-Grocers
-
+git clone https://github.com/DavidHunter94/Proyecto-urban-grocers-api-tests.git
+cd Proyecto-urban-grocers-api-tests
 # 2. Instalar dependencias
 pip install pytest requests
-
 # 3. Ejecutar los tests
 pytest -v
 ```
