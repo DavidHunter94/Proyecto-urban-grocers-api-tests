@@ -1,50 +1,80 @@
-# Proyecto de Pruebas de Creación de Kits - Urban Grocers
+# Urban Grocers – Pruebas de API con pytest
 
-## Descripción
+Proyecto de automatización de pruebas de API para la funcionalidad de **creación de kits de productos** en la aplicación **Urban Grocers**, desarrollado como parte del Sprint 7 del Bootcamp de QA de TripleTen.
 
-Este proyecto automatiza las pruebas de la funcionalidad de **creación de kits de productos** en la aplicación **Urban Grocers**. Se utilizan pruebas con **Pytest** para validar distintos escenarios, asegurando que la API funcione correctamente y cumpla con los requisitos definidos.
+Valida que el endpoint de creación de kits responda correctamente ante distintos escenarios: datos válidos, límites de caracteres, campos vacíos y tipos de datos incorrectos.
 
-### Características:
+---
 
-- Validación de datos enviados a la API
-- Manejo de respuestas esperadas y errores
-- Pruebas parametrizadas para diferentes configuraciones de kits
+## 🧪 Cobertura de pruebas
 
-## Requisitos
+### Casos positivos
+- Nombre con 1 carácter (límite inferior)
+- Nombre con 511 caracteres (límite superior)
+- Nombre con caracteres especiales
+- Nombre con espacios
 
-Antes de ejecutar las pruebas, asegúrate de tener instaladas las siguientes herramientas:
+### Casos negativos
+- Nombre vacío
+- Nombre con 512 caracteres (fuera de límite)
+- Nombre con tipo de dato incorrecto (número en lugar de string)
+- Sin campo nombre en el body
 
-- **Python 3.x**
-- **Pytest** (`pip install pytest`)
-- **Requests** (`pip install requests`)
+---
 
-## Instalación y Ejecución
+## ⚙️ Tecnologías utilizadas
 
-Sigue estos pasos para configurar y ejecutar las pruebas:
+- **Lenguaje:** Python 3.x
+- **Framework de pruebas:** pytest
+- **Cliente HTTP:** requests
+- **Patrón:** Separación en capas (configuración, datos, requests, tests)
 
-1. **Clonar el repositorio**
+---
 
-   git clone https://github.com/DavidHunter94/qa-project-Urban-Grocers-app-es
+## 🏗️ Estructura del proyecto
 
-2. **Instalar dependencias**
+```
+project/
+│
+├── configuration.py          ← URL base y endpoints
+├── data.py                   ← Datos de prueba y body de requests
+├── sender_stand_request.py   ← Funciones que llaman a la API
+├── create_kit_name_kit_test.py ← Tests con pytest
+└── README.md
+```
 
-   pip install -r requirements.txt
+---
 
-3. **Ejecutar pruebas**
+## ▶️ Instalación y ejecución
 
-   pytest
-   
-## Estructura del Proyecto
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/DavidHunter94/Proyecto-de-Pruebas-de-Creaci-n-de-Kits---Urban-Grocers.git
+cd Proyecto-de-Pruebas-de-Creaci-n-de-Kits---Urban-Grocers
 
-📂 **config/**            → Archivos de configuración, como `configuration.py`  
-📂 **data/**              → Archivos relacionados con los datos de prueba, como `data.py`  
-📂 **requests/**          → Archivos relacionados con las solicitudes a la API, como `sender_stand_request.py`  
-📄 **create_kit_name_kit_test.py**  → Pruebas automatizadas para la creación de kits de productos  
-📄 **.gitignore**         → Archivos para excluir del control de versiones  
-📄 **README.md**          → Documentación del proyecto
+# 2. Instalar dependencias
+pip install pytest requests
 
+# 3. Ejecutar los tests
+pytest -v
+```
 
-## Autor y Sprint
+> ⚠️ Los tests requieren que el servidor de Urban Grocers esté activo.
+> Esta URL es temporal del entorno de TripleTen y puede estar inactiva
+> una vez finalizado el sprint.
 
-*Autor:* Víctor David Martínez Matías
-*Sprint:* 7 - Introducción a la automatización de pruebas
+---
+
+## 🔍 Detalles de implementación
+
+- **`configuration.py`** centraliza la URL base y los endpoints, facilitando cambios de entorno sin tocar los tests.
+- **`data.py`** contiene todos los cuerpos de las requests, separando los datos de la lógica.
+- **`sender_stand_request.py`** encapsula las llamadas HTTP, manteniendo los tests limpios y reutilizables.
+- Los tests validan tanto el **status code** como el **contenido del body** de la respuesta.
+
+---
+
+## 🚀 Autor
+
+**Victor David Martínez Matías**
+QA Engineer con experiencia en pruebas manuales, automatización UI y pruebas de API. - Introducción a la automatización de pruebas
